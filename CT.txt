@@ -1,0 +1,74 @@
+from msilib.schema import Error
+import pandas as pd
+import matplotlib.pyplot as plt
+import sys
+
+                                         # Performing Gradient Descent in Linear Regression Modle 
+                                         
+dt = pd.read_csv(r"C:\Users\nafis\OneDrive\Desktop\CSE445\data.csv")
+x=dt['x']                                 # determining x 
+y=dt['y']                                 # deter mining y
+def LR(m,c,realval,iterations):
+
+
+    # 0.0001 < realval < 0.9999
+    if((realval > 0.0001) and (realval < 0.9999)): 
+        print("")
+    else:
+        print("Warning! Your Learning Rate is not in limits. \n")
+    for i in range(iterations): 
+        y_pred = m*x + c                 # Predicted value of y
+        Dm = (-2/n) * sum(x*(y-y_pred))  # Derivative of COST with respectto m
+        Dc = (-2/n) * sum(y-y_pred)      # Derivative of COST with respect to c
+        m = m-realval*Dm                 # Updated value of m
+        c = c-realval*Dc                 # Updated value of c
+    #print (m, c)                        #1000 times updated output value of m and c 
+
+    print('m:',m)                        #New m output
+    print('c:',c)  
+
+
+    y_pred = m*x + c                     #prediction output
+    plt.scatter(x, y)
+    plt.plot([min(x), max(x)], [min(y_pred), max(y_pred)], color='red')
+    plt.show()
+
+
+if __name__ == '__main__' :
+
+    H=sys.argv
+    print(H)
+    
+    AlgoName = 'Linear regression'        # -a
+    dt = 'Irish'                          # -f
+    FoldNum = '1'                         # -n
+    classLevel = 'y'                      # -c
+    realval = 0.0001                      # -l
+    
+    for i in range(len(H)): 
+        if H[i] == '-a':
+            AlgoName = H[i+1]
+        elif H[i]=='-f':
+            dt = H[i+1]
+        elif H[i]=='-n':
+            FoldNum = H[i+1]
+        elif H[i]=='-c':
+            classLevel = H[i+1]
+        elif H[i]=='-l':
+            realval = H[i+1]
+    
+    print("The modle is " +AlgoName+ " with dataset " +dt+ " where number of folder " +FoldNum+ " with target attribute " +classLevel+ " and learning rate "+str(realval)+".Thank you for the input.")
+
+#dt = pd.read_csv(r"C:\Users\nafis\OneDrive\Desktop\CSE445\data.csv")
+
+#x=dt['x']                                 # determining x 
+#y=dt['y']                                 # deter mining y
+
+m = 0                                     #Initial value of m 
+c = 0                                     #Initial value of m 
+#realval  = 0.0001                        # learning Rate
+
+n = int(100)                              # Number of elements in x column
+
+iterations = 1000                         # value will be updated 1000 times
+LR(m,c,float(realval),iterations)
