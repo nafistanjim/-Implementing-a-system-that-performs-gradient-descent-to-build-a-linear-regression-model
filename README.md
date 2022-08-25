@@ -1,4 +1,4 @@
-# -Implementing-a-system-that-performs-gradient-descent-to-build-a-linear-regression-model
+# Implementing-a-system-that-performs-gradient-descent-to-build-a-linear-regression-model
 Description: Write a python code that takes input from console in a modular* approach. The console input may contain a set of switches as parameters followed by the program name and their corresponding parameter values. Let's name the program "CT" which stands for "Classification Task". Your program should be able to handle at least the following switches:  
 1. -a algoName (algoName can be "LR" for today's lab task. If no "-a" switch is found, default will be linear regression) 
 2. -f fileName (fileName is the name of the dataset. By default the dataset is "Irish" which is available in a certain package of python) 
